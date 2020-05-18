@@ -297,8 +297,8 @@ if build "pkg-config"; then
 fi
 
 if build "cmake"; then
-	download "https://cmake.org/files/v3.15/cmake-3.15.4.tar.gz" "cmake-3.15.4.tar.gz"
-	cd $PACKAGES/cmake-3.15.4  || exit
+	download "https://github.com/Kitware/CMake/releases/download/v3.17.2/cmake-3.17.2.tar.gz" "cmake-3.17.2.tar.gz"
+	cd $PACKAGES/cmake-3.17.2  || exit
 	rm Modules/FindJava.cmake
 	perl -p -i -e "s/get_filename_component.JNIPATH/#get_filename_component(JNIPATH/g" Tests/CMakeLists.txt
 	perl -p -i -e "s/get_filename_component.JNIPATH/#get_filename_component(JNIPATH/g" Tests/CMakeLists.txt
