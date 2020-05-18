@@ -10,8 +10,8 @@ CC=clang
 LDFLAGS="-L${WORKSPACE}/lib -lm"
 CFLAGS="-I${WORKSPACE}/include"
 PKG_CONFIG_PATH="${WORKSPACE}/lib/pkgconfig"
-ADDITIONAL_CONFIGURE_OPTIONS=" --enable-cuvid --enable-libfreetype --enable-cuda --enable-cuvid --enable-nvenc --enable-cuda-sdk --enable-cuda-nvcc --enable-cuda --enable-libnpp "
-
+#ADDITIONAL_CONFIGURE_OPTIONS=" --enable-cuvid --enable-nvenc --enable-libfreetype" --enable-cuda --enable-cuda-sdk --enable-cuda-nvcc --enable-cuda --enable-libnpp "
+ADDITIONAL_CONFIGURE_OPTIONS="  --enable-cuvid --enable-nvenc --enable-libfreetype"
 # Speed up the process
 # Env Var NUMJOBS overrides automatic detection
 if [[ -n $NUMJOBS ]]; then
