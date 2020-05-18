@@ -10,7 +10,7 @@ CC=clang
 LDFLAGS="-L${WORKSPACE}/lib -lm"
 CFLAGS="-I${WORKSPACE}/include"
 PKG_CONFIG_PATH="${WORKSPACE}/lib/pkgconfig"
-ADDITIONAL_CONFIGURE_OPTIONS="--enable-cuvid --enable-nvenc --enable-libfreetype"
+ADDITIONAL_CONFIGURE_OPTIONS=" --enable-cuvid --enable-libfreetype --enable-cuda-sdk --enable-cuvid --enable-nvenc --enable-cuda-sdk --enable-cuda-nvcc --enable-cuda --enable-libnpp "
 
 # Speed up the process
 # Env Var NUMJOBS overrides automatic detection
@@ -163,6 +163,15 @@ fi
 if ! command_exists "curl"; then
     echo "curl not installed.";
     exit 1
+fi
+
+if build "nv-codec-headers"; then
+	cd $PACKAGES/nv-codec-headers || exit
+	execute git clone https://git.videolan.org/git/ffmpeg/nv-codec-headers.git
+	execute ./configure --prefix=${WORKSPACE}
+	execute make -j $MJOBS
+	execute make install
+	build_done "nv-codec-headers"
 fi
 
 if build "yasm"; then
